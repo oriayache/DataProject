@@ -1,0 +1,97 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+    <html>
+
+    <h2 align="center"> Data module</h2>
+    <img src="https://besttv232-ynet-images1-prod.cdn.it.best-tv.com/PicServer3/2013/04/10/4560309/kineret_end_winter.jpg" align="left" width="280" height="400" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/600px-Solid_white.svg.png" align="left" width="120" height="400"
+     <br />
+    <p align="right"><font size="4">?למה בחרתי את הנושא</font> </p>
+    <p align="right">
+        בחרתי בנושא זה מפני שבזמן האחרון יש עלייה משמעותית במפלס הכנרת לכן תהיתי כמה השינוי הזה משפיע על מפלס של ים המלח
+    </p>
+    <br />
+    <h2 align="right">
+        <font size="4">
+            dataהסבר על ה
+        </font>
+    </h2>
+    <p align="right">
+        הנתונים שלי הם תאריך מדידת מפלס ומפלס במטרים
+    </p>
+
+    <br />
+    <br />
+
+
+    <div class="dropdown">
+        <button style="width:300px;text-align:center;position:center;" class="dropbtn">Data Sets</button>
+        <div class="dropdown-content">
+            {%for Page in DataSorces%}
+            <a href={{Page[0]}}>{{Page[1]}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <br />
+    {%for i in range(15) %}
+    <br />
+    {%endfor%}
+
+    </html>
+
+
+
+<style>
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #4287f5;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #1a53ad;
+    }
+</style>
+
+{% endblock %}

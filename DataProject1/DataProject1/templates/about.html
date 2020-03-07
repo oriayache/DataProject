@@ -1,0 +1,79 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+
+<h2 align=" center"> הסבר על הפרוייקט</h2>
+<p align="center">בפרוייקט זה הראתי את ההשפעה של מפלס ים המלח על מפלס ים הכינרת באמצעות טבלאות וגרפים  </p>
+<p align="center"> עשיתי את פרוייקט זה במסגרת שיעורי מדי המחשב בבית בספר</p>
+<br />
+<br />
+<h2 align="center"> כלים טכנולוגיים</h2>
+<table>
+    <tr>
+        <td>
+            הסבר
+        </td>
+        <td>
+            חבילה
+        </td>
+    </tr>
+    <tr>
+        <td>
+            בכדאי ליצור את האתר FrameWork Web השתמשתי בה כ
+        </td>
+        <td>
+            Flask
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ספריית תוכנה שנכתבה עבור שפת התכנות פייתון ומיועדת לניתוח ועיבוד נתונים. בפרט, היא מציעה מבני נתונים ופעולות לעיבוד מבני נתונים נומריים וסדרות זמן.
+        </td>
+        <td>
+            pandas
+        </td>
+    </tr>
+    <tr>
+        <td>
+            חבילה לייצרת גרפים
+        </td>
+        <td>
+            MatPlotLib
+        </td>
+    </tr>
+    <tr>
+        <td>
+            דרך לשמירה של נתונים
+        </td>
+        <td>
+            Sql
+        </td>
+    </tr>
+    <tr>
+        <td>
+         flask הספרייה משמשת כבדיקה האם יש לי משתמש מחובר לאתר
+
+        </td>
+        <td>
+            Flask Login
+        </td>
+    </tr>
+  
+
+
+
+</table>
+
+<style>
+
+    table,th,td,tr{
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
+        text-align:center;
+        padding:10px;
+    }
+</style>
+{% endblock %}

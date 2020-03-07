@@ -1,0 +1,64 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<html>
+    <ul class="tablesul">
+        {% for table in tables %}   
+        <li class="tables">
+            {%if table[1] == "plot" %}
+            <table>
+                <br />
+                <br />
+                <br />
+                <tr>
+                    <td><img style="height:300px" src="data:image/png;base64, {{table[0]}}"></td>
+
+                </tr>
+                <tr>
+                    <td><img style="height:300px" src="data:image/png;base64, {{table[2]}}"></td>
+                </tr>
+            </table>
+            {%else%}
+            <h3 style="text-align:center;">{{table[1]}}</h3>
+            {{ table[0]|safe }}
+            {%endif%}
+        </li>
+        {% endfor %}
+    </ul>
+</html>
+<style>
+     .tablesul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+        width: 100%;
+    }
+
+    .tables {
+        float: left;
+        margin:30px;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+
+<html>
+        <div class="title">
+            <h2>{{ title|safe }}</h2>
+            <h3>
+                {{TextBlock|safe}}
+            </h3>
+        </div>
+        
+        <img src="{{IMG1|safe}}" align="left" width="300" height="400"/>
+        <img src="{{IMG2|safe}}" align="right" width="300"height="400"/>
+         <table class="FildInfo">
+             {% for fild in FildInfoTable %}
+             <tr class="FildInfo">
+                 {% for part in fild %}
+                 {%if part == None%}
+                 <th class="FildInfo"><button onclick="myFunction()">טבלת נתונים</button></th>
+                 {%else%}
+                 <th class="FildInfo">{{part|safe}}</th>
+                 {%endif%}
+                 {%  endfor  %}
+             </tr>
+              {%  endfor  %}
+
+         </table>
+        
+         <br/>
+
+
+         <div class="Datatable" id="DataTable">
+
+             {% for table in tables %}
+             <table class="Datatable">
+                 {{ table|safe }}
+             </table>
+             {% endfor %}
+
+         </div>
+
+
+</html>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("DataTable");
+        if (x.style.visibility  === "visible") {
+            x.style.visibility  = "hidden";
+        } else {
+            x.style.visibility  = "visible";
+        }
+    }
+</script>
+
+
+<style>
+        html{
+        }
+        div.title{
+            text-align: center;
+        }
+        table {
+            text-align: center;
+
+        }
+        div.table{
+            visibility:hidden;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .FildInfo{
+             margin-left:auto;
+             margin-right:auto;
+             text-align:center;
+        }
+        table,th,td,tr{
+            border: 1px solid #000000; 
+            margin-left:auto;
+             margin-right:auto;
+             width:auto;
+             text-align:center;
+        }
+        .Datatable{
+             visibility:hidden;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:center;
+            position:center;
+            
+        }
+        .FildInfoDiv{
+            
+        }
+      
+</style>
+
+
+    {% endblock %}
