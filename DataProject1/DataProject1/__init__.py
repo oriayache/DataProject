@@ -18,5 +18,4 @@ app.secret_key = 'super secret key'
 login_manager = LoginManager(app)
 
 
-
-import DataProject1.views
+from DataProject1.views import *

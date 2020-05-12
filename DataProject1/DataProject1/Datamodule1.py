@@ -63,7 +63,30 @@ def create_plot_for_compere():
     return plot,render_plot()
 
     
+def Get_Data_From_Qeruy(year,month,day,datas):
+
+    if datas == "Hacinert":
+        df = pd.read_csv(f'{dir_path}/Src/kinneret_level.csv') # פותח את הטבלה מקובץ אקסל ומגדיר אותה כדאטה פריים. 
+        df.rename(columns={'מפלס הכנרת במטרים': 'מפלס'}, inplace=True)
+
+    else:
+        df = pd.read_csv(f'{dir_path}/Src/dead_sea_level.csv') # פותח את הטבלה מקובץ אקסל ומגדיר אותה כדאטה פריים. 
+
+
+    df['תאריך מדידה'] = pd.to_datetime(df['תאריך מדידה'],errors='coerce') # משנה את התאריכים שמגיעים בסטרינג לדאטה טיים
+    df['מפלס'] = df['מפלס'].astype('float') # הופך את הטור מפלס לטור מסוג מספר ממשי
+
+    df['year'], df['month'],df['day'] = df['תאריך מדידה'].dt.year, df['תאריך מדידה'].dt.month, df['תאריך מדידה'].dt.day
+
+    df = df.loc[(df['year'] == year) & (df['month'] == month) & (df['day'] == day)]
+    avg = df['מפלס'].mean() # מחשב ממוצע של הטור
     
+
+    s = df.style.applymap(lambda x: color_negative_red_color_positive_green(x,avg) ,subset=['מפלס'])
+
+    Tables =s.hide_index().hide_columns(['year','month','day']).render()
+    
+    return Tables
 
 def create_html_page_for_src2():
     

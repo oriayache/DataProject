@@ -53,10 +53,12 @@
     <Content Include="DataProject1\templates\CompreData.html" />
     <Content Include="DataProject1\templates\DataPage1.html" />
     <Content Include="DataProject1\templates\DataPageMenu.html" />
+    <Content Include="DataProject1\templates\DataQuery.html" />
     <Content Include="DataProject1\templates\index.html" />
     <Content Include="DataProject1\templates\login.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="DataProject1\templates\QueryPage.html" />
     <Content Include="DataProject1\templates\register.html">
       <SubType>Code</SubType>
     </Content>

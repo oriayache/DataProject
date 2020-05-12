@@ -5,9 +5,21 @@ Routes and views for the flask application.
 from datetime import datetime
 from flask import render_template,request,redirect,url_for
 from DataProject1 import app,db,login_manager
-from DataProject1.Datamodule1 import create_html_page_for_src1,create_html_page_for_src2,create_plot_for_compere
+from DataProject1.Datamodule1 import create_html_page_for_src1,create_html_page_for_src2,create_plot_for_compere,Get_Data_From_Qeruy
 from DataProject1.Usermodule import user
 from flask_login import login_required, logout_user, current_user, login_user
+from flask_wtf import FlaskForm
+from wtforms import DateTimeField,SubmitField,SelectField
+from wtforms.validators import DataRequired
+from wtforms.fields.html5 import DateField
+
+
+class Qury_(FlaskForm):
+    datasource = SelectField(choices=[('Hacinert','הכנרת'), ('yamhamelach','ים המלח')],validators = [DataRequired('please select ')])
+    date = DateField('select date',format='%Y-%m-%d',validators=[DataRequired('please select ')])
+
+
+    submit = SubmitField("serach")
 
 
 @login_manager.user_loader
@@ -64,6 +76,7 @@ def DataPageMenu():
 
 
 @app.route('/DataPage1') #ים המלח 
+@login_required
 def data_page1():
     Tables = create_html_page_for_src1()
     FildInfoTable = [["הסבר",'שדה'],["מפלס ים המלח במטרים",'מפלס'],['התאריך שבו התקבל המפלס','תאריך מדידה'],[None,'טבלת נתונים']]
@@ -73,6 +86,7 @@ def data_page1():
     return render_template('DataPage1.html',tables=[Tables],title="ים המלח",FildInfoTable=FildInfoTable,TextBlock=TextBlock,IMG1=IMG1,IMG2=IMG2)
 
 @app.route('/DataPage2') #הכנרת
+@login_required
 def data_page2():
     
     Tables = create_html_page_for_src2()
@@ -88,6 +102,19 @@ def compere_data_page():
     
     return render_template('CompreData.html',tables=Tables)
 
+@app.route('/qurey',methods=['GET','POST'])
+@login_required
+def query():
+    q_from = Qury_()
+
+    table = None
+    if q_from.validate():
+        cooltime = q_from.date.data
+
+        table = Get_Data_From_Qeruy(cooltime.year, cooltime.month,cooltime.day,q_from.datasource.data)
+
+
+    return render_template('QueryPage.html',form=q_from,tables=[table])
 
 @app.route('/contact')
 def contact():
@@ -114,3 +141,4 @@ def about():
         year=datetime.now().year,
         message='Your application description page.'
     )
+
